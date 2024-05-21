@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+const apiURL = process.env.REACT_APP_API_URL;
 
 function AddUser() {
   const [formData, setFormData] = useState({
@@ -19,10 +20,7 @@ function AddUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3001/add-user",
-        formData
-      );
+      const response = await axios.post(`${apiURL}/add-user`, formData);
       console.log(response.data);
       setFormData({
         email: "",

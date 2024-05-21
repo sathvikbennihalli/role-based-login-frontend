@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const USER_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const apiURL = process.env.REACT_APP_API_URL;
 
 const Register = () => {
   const userRef = useRef();
@@ -55,9 +56,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/register", values)
+      .post(`${apiURL}/register`, values)
       .then((res) => {
         if (res.data.Status === "Success") {
+          setSuccess(true);
           navigate("/login");
         } else {
           alert("Error");
@@ -80,9 +82,7 @@ const Register = () => {
         <div className="App">
           <section>
             <h1>Success!</h1>
-            <p>
-              <a href="#">Sign In</a>
-            </p>
+            <p></p>
           </section>
         </div>
       ) : (

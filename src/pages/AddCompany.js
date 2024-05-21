@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+const apiURL = process.env.REACT_APP_API_URL;
 
 function AddCompany() {
   const [companyDetails, setCompanyDetails] = useState({
@@ -32,7 +33,7 @@ function AddCompany() {
     } = companyDetails;
 
     axios
-      .post("http://localhost:3001/add-company", {
+      .post(`${apiURL}/add-company`, {
         companyId,
         companyName,
         companyGST,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../api/axios";
+const apiURL = process.env.REACT_APP_API_URL;
 
 const Home = () => {
   const [auth, setAuth] = useState(true);
@@ -11,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/authenticate")
+      .get(`${apiURL}/authenticate`)
       .then((res) => {
         if (res.data.Status === "Success") {
           setAuth(true);
@@ -26,7 +27,7 @@ const Home = () => {
 
   const handleDelete = () => {
     axios
-      .get("http://localhost:3001/logout")
+      .get(`${apiURL}/logout`)
       .then((res) => {
         window.location.reload(true);
       })

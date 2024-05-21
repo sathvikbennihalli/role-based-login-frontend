@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import CompanyCard from "../components/CompanyCard";
 import axios from "axios";
+const apiURL = process.env.REACT_APP_API_URL;
 
 function ViewCompany() {
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/get-companies")
+      .get(`${apiURL}/get-companies`)
       .then((res) => {
         setCompanies(res.data); // Store fetched companies in state
       })
