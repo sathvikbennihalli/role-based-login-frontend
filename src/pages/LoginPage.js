@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../api/axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
+import axiosInstance from "../components/axiosInstance";
 
 const USER_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -55,7 +56,7 @@ const Login = ({ onLoginSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${apiURL}/login`, values);
+      const res = await axiosInstance.post(`${apiURL}/login`, values);
       if (res.data.Status === "Success") {
         const { role } = res.data; // Extract 'role' from the response
         Cookies.set("userRole", role, { expires: 1 }); // 'role' is the value you want to store
