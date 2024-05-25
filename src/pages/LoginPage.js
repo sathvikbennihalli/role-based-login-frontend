@@ -63,8 +63,8 @@ const Login = ({ onLoginSuccess }) => {
         // // Cookies.set("token", res.data.Cookies.)
         // console.log(res.headers.);
 
-        Cookies.set("token", res.data.token);
-        
+        Cookies.set("token", res.data.token, { secure: true });
+
         onLoginSuccess(role);
         navigate(from, { replace: true });
       } else {
