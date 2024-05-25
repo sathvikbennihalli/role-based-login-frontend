@@ -60,6 +60,10 @@ const Login = ({ onLoginSuccess }) => {
       if (res.data.Status === "Success") {
         const { role } = res.data; // Extract 'role' from the response
         Cookies.set("userRole", role, { expires: 1 }); // 'role' is the value you want to store
+        // // Cookies.set("token", res.data.Cookies.)
+        // console.log(res.headers.);
+
+        Cookies.set("token", res.data.token);
         onLoginSuccess(role);
         navigate(from, { replace: true });
       } else {
