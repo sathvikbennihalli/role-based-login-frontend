@@ -12,6 +12,9 @@ import Layout from "./pages/Layout";
 import Cookies from "js-cookie";
 import RequireAuth from "./components/RequireAuth";
 import Unauthorized from "./pages/Unauthorized";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 function App() {
   const [userRole, setUserRole] = useState(null);
