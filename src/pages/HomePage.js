@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../api/axios";
 const apiURL = process.env.REACT_APP_API_URL;
+axios.defaults.withCredentials = true;
 
 const Home = () => {
   const [auth, setAuth] = useState(true);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
-
-  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     axios
