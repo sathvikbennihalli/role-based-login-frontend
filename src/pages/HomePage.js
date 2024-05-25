@@ -4,6 +4,7 @@ import axios from "../api/axios";
 const apiURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
 
+
 const Home = () => {
   const [auth, setAuth] = useState(true);
   const [message, setMessage] = useState("");
@@ -11,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/authenticate`, { withCredentials: true })
+      .get(`/authenticate`)
       .then((res) => {
         if (res.data.Status === "Success") {
           setAuth(true);
