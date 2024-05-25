@@ -1,4 +1,3 @@
-import { config } from "@fortawesome/fontawesome-svg-core";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -8,17 +7,16 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(
-    config => {
-        const authToken = Cookies.get("token");
+  (config) => {
+    const authToken = Cookies.get("token");
 
-        config.headers['Cookie'] = `token=${authToken}`;
+    config.headers["Cookie"] = `token=${authToken}`;
 
-        return config;
-    }, error => {
-        return Promise.reject(error);
-    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
 );
-
-
 
 export default instance;
