@@ -64,6 +64,7 @@ const Login = ({ onLoginSuccess }) => {
         // console.log(res.headers.);
 
         Cookies.set("token", res.data.token);
+        
         onLoginSuccess(role);
         navigate(from, { replace: true });
       } else {

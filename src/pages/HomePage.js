@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/authenticate`)
+      .get(`${apiURL}/authenticate`, { withCredentials: true })
       .then((res) => {
         if (res.data.Status === "Success") {
           setAuth(true);
